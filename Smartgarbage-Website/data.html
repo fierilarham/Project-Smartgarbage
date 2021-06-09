@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="in">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css"></link>
+    <title>Data</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            setInterval(function(){
+                $.ajax({
+                    url: 'https://morning-woodland-37074.herokuapp.com/https://platform.antares.id:8443/~/antares-cse/antares-id/Smartgarbage/Monitoring/la',
+                    method: 'GET',
+                    headers: {
+                        'X-M2M-Origin':'c0769d7e2f485191:1a356b543f0d7083',
+                        'Content-Type':'application/json;ty=4',
+                        'Accept':'application/json'
+                      },
+                      dataType: 'json',
+                      success:function(response){
+                          data = JSON.parse(response["m2m:cin"].con);
+                          console.log(data);
+                          $("#data-jarak").text(data.Jarak); //sesuaikan variabel dengan antares
+                          $("#data-suhu").text(data.Temperature); //sesuaikan variabel dengan antares
+                          $("#data-hum").text(data.Kelembapan); //sesuaikan variabel dengan antares
+                          $("#success").text("Connected"); //sesuaikan variabel dengan antares
+                      },
+                      error:function(data){
+                          $("#data-jarak").text("Loading..."); //sesuaikan variabel dengan antares
+                          $("#data-suhu").text("Loading..."); //sesuaikan variabel dengan antares
+                          $("#data-hum").text("Loading..."); //sesuaikan variabel dengan antares
+                          $("#success").text("Not Connected"); //sesuaikan variabel dengan antares
+                      }
+                  });
+              },1000)
+          });
+          </script>
+</head>
+<body>
+        <!-- Navbar -->
+        <nav>
+            <div class="logo">
+                <a href="index.html" id="logo"><img src="images/ikon.png" alt="ikon"></a>
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="about.html">About</a>
+                </li>
+                <li>
+                    <a href="data.html">Data</a>
+                </li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    
+        <script src="app.js"></script>
+    
+        <!--isi-->
+        <main>
+            <div class="utama">
+                <div class="container">
+                    <div class="content"></div>
+                        <table>
+                            <caption>Data real-time</caption>
+                            <tr>
+                                <th>Nilai Jarak</th>
+                                <th>Nilai Temperature</th>
+                                <th>Nilai Kelembapan</th>
+                                <th>Koneksi Alat</th>
+                            </tr>
+                            <tr>
+                                <td><span id="data-jarak"></span></td>
+                                <td><span id="data-suhu"></span></td>
+                                <td><span id="data-hum"></span></td>
+                                <td><span id="success"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    
+        <!--Footer-->
+        <footer>
+            <div class="foot_container">
+                <div class="footerlink">
+                   
+                </div>
+                <div class="social">
+                    <div class="social_media">
+                        <div class="social_logo">
+                            <a href="index.html" id="social_logo"><i class="fa"></i>©Website Percobaan 2021</a>
+                        </div>
+                        <p class="website">#Aman2021</p>
+                        <p class="website">#DirumahAja</p>
+                        <div class="socialikon">
+                            <a href="https://www.instagram.com/" class="sosial_ikon_link"> 
+                                <i class="fab fa-instagram"></i>  
+                            </a>
+                            <a href="https://www.linkedin.com/login/in" class="sosial_ikon_link">
+                                <i class="fab fa-linkedin"></i>  
+                            </a>
+                            <a href="https://www.whatsapp.com/?lang=en" class="sosial_ikon_link">
+                                <i class="fab fa-whatsapp"></i>  
+                            </a>
+                            <a href="http://gmail.com/" class="sosial_ikon_link">
+                                <i class="fas fa-envelope"></i>  
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+</body>
+</html>
