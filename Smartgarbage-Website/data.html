@@ -24,9 +24,9 @@
                       success:function(response){
                           data = JSON.parse(response["m2m:cin"].con);
                           console.log(data);
-                          $("#data-jarak").text(data.Jarak); //sesuaikan variabel dengan antares
-                          $("#data-suhu").text(data.Temperature); //sesuaikan variabel dengan antares
-                          $("#data-hum").text(data.Kelembapan); //sesuaikan variabel dengan antares
+                          $("#data-jarak").text(data["Jarak: "]); //sesuaikan variabel dengan antares
+                          $("#data-suhu").text(data["Temperature: "]); //sesuaikan variabel dengan antares
+                          $("#data-hum").text(data["Kelembapan: "]); //sesuaikan variabel dengan antares
                           $("#success").text("Connected"); //sesuaikan variabel dengan antares
                       },
                       error:function(data){
@@ -77,7 +77,7 @@
                                 <th>Nilai Jarak</th>
                                 <th>Nilai Temperature</th>
                                 <th>Nilai Kelembapan</th>
-                                <th>Koneksi Alat</th>
+                                <th>Status Alat</th>
                             </tr>
                             <tr>
                                 <td><span id="data-jarak"></span></td>

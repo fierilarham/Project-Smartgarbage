@@ -195,6 +195,9 @@ table td{
         font-size: 3rem;
         margin-top: 2rem;
     }
+    .content table {
+        table-layout: fixed;
+    }
 }
 
 .foot_container {
